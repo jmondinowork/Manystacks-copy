@@ -1,0 +1,9 @@
+Nom,Catégorie,Numéro de série,Type de contrat,Prix,Images,Status,Mail attribution,Etat,Système D'exploitation,Config,IMEI 1,IMEI 2,Couleur,Caméra,Caractéristique Caméra,Autonomie Batterie,Marque,Modèle,RAM,Stockage,Type De Stockage,Processeur,Type D'écran,Résolution écran,Temps de réponse écran,Fréquence écran,Luminosité écran,Taille Écran,Carte Graphique,Connectivité,Connectique,Alimentation,Audio,Dimensions,Poids,Clavier
+MacBook Pro,ordinateurs,99999,location,19.9,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En service,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+iPhone 15,telephones,88888,location,9.99,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En réserve,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+iPad pro,tablettes,77777,achat,400,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En maintenance,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Belkin 6-en-1,adaptateurs,66666,achat,20,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,Hors service,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+AirPods pro,casques-micros,55555,achat,190,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En service,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+MagicKeyboard,claviers,44444,location,9,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En réserve,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+MagicMouse,souris,33333,location,9.9,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En service,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Apple Studio,ecrans,22222,achat,199.99,https://manystacks.s3.eu-west-3.amazonaws.com/ms_logo.png,En réserve,,Neuf,,,,,,,,,,,,,,,,,,,,,,,,,,,,

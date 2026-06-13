@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --white: #fff;
+    --black: #000;
+    --black-light: rgba(0, 0, 0, 0.1);
+    --grey: #556987;
+    --grey-light: rgba(85, 105, 135, 0.1);
+
+    --grey-50: #f7f8f9;
+    --grey-100: #eef0f3;
+    --grey-200: #d5dae1;
+    --grey-300: #bbc3cf;
+    --grey-400: #8896ab;
+    --grey-500: #556987;
+    --grey-600: #4D5F7A;
+    --grey-700: #404F65;
+    --grey-800: #333F51;
+    --grey-900: #2a3342;
+
+    --main: rgba(112, 112, 255, 1);
+    --main-light: rgba(112, 112, 255, .1);
+    --lightpurple: rgba(112, 112, 255, .1);
+    --red: rgba(239, 89, 68, 1);
+    --red-light: rgb(239, 89, 68, .1);
+    --red-medium: rgb(239, 89, 68, .5);
+    --indigo: rgba(11, 192, 218, 1);
+    --indigo-light: rgba(11, 192, 218, .1);
+    --yellow: rgba(251, 178, 11, 1);
+    --yellow-light: rgba(251, 178, 11, .1);
+    --green: rgba(13, 210, 122, 1);
+    --green-light: rgba(13, 210, 122, .1);
+    --orange: rgba(252, 133, 10, 1);
+    --orange-light: rgba(252, 133, 10, .1);
+    --pink: rgba(244, 77, 151, 1);
+    --pink-light: rgba(244, 77, 151, .1);
+}
+
+* {
+    box-sizing: border-box;
+    border-style: unset;
+}
+
+*::-webkit-scrollbar {
+    position: absolute;
+    width: 0px;
+    background: transparent;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.body {
+    max-width: 3000px !important;
+    margin: 0 auto !important;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.productimagecontainer {
+    background-repeat: no-repeat;
+}
+
+.productimagecontainer.absolute {
+    position: absolute !important;
+    top: 50% !important;
+    left: auto;
+    right: auto;
+    transform: translate(0, -50%) !important;
+}
+
+.navbarelementselected {
+    display: flex !important;
+}
+
+textarea {
+    resize: none !important;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.error {
+    color: var(--red);
+    font-size: 14px;
+}
+
+.red {
+    color: var(--red) !important;
+}
+
+img.flags {
+    width: 20px;
+    height: 14px;
+}
+
+input[type="checkbox"]:checked,
+input[type="checkbox"]:checked:hover,
+input[type="checkbox"]:checked:focus {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color: #7070ff;
+    border-radius: 4px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.darkmodalbackground {
+    overflow: scroll;
+    height: fit-content;
+    min-height: 100%;
+    z-index: 999;
+    display: none;
+}
+
+.darkmodalbackground.show {
+    display: flex;
+}
+
+.selectadresschoice {
+    min-height: unset;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+}
+
+.toggle {
+    border-radius: 12px;
+}
+
+.statut-en-attente-de-financement {
+    border-radius: 1000px;
+    background-color: var(--indigo-light);
+    color: var(--indigo);
+    width: fit-content;
+}
+
+.statut-en-attente-de-provisionnement {
+    border-radius: 1000px;
+    background-color: var(--indigo-light);
+    color: var(--indigo);
+    width: fit-content;
+}
+
+.statut-en-attente-de-signature {
+    background-color: var(--pink-light);
+    color: var(--pink);
+    border-radius: 1000px;
+    width: fit-content;
+}
+
+.statut-en-validation-du-contrat {
+    background-color: rgba(252, 133, 10, 0.1);
+    color: #fc850a;
+    border-radius: 1000px;
+    width: fit-content;
+}
+
+.statut-livraison-en-cours {
+    background-color: var(--lightpurple);
+    color: var(--main);
+    border-radius: 1000px;
+    width: fit-content;
+}
+
+.statut-terminée {
+    background-color: var(--green-light);
+    color: var(--green);
+    border-radius: 1000px;
+    width: fit-content;
+}
+.statut-erreur {
+    background-color: var(--red-light);
+    color: var(--red);
+    border-radius: 1000px;
+    width: fit-content;
+}
+
+.input-error {
+    border: 1px solid var(--red) !important;
+}
+
+/* .stacksgrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+} */
+
+.stackunitcontainer,
+.stacklicencecontainer {
+    border: 1px solid #fff;
+}
+
+.stackunitcontainer:hover,
+.stacklicencecontainer:hover {
+    border-color: var(--grey-200) !important;
+}
+
+.avatarcircle_img {
+    background-position: center;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    border-radius: 10000px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.tagblock.en-service {
+    background-color: var(--green-light);
+    color: var(--green);
+}
+
+.tagblock.hors-service {
+    background-color: var(--red-light);
+    color: var(--red);
+}
+
+.tagblock.en-maintenance {
+    background-color: var(--orange-light);
+    color: var(--orange);
+}
+
+.tagblock.en-reserve {
+    background-color: var(--indigo-light);
+    color: var(--indigo);
+}
+
+.tagblock.en-cours {
+    background-color: var(--indigo-light);
+    color: var(--indigo);
+}
+
+.tagblock.resolu {
+    background-color: var(--green-light);
+    color: var(--green);
+}
+
+.tagblock.en-service .dot {
+    background-color: var(--green);
+}
+
+.tagblock.hors-service .dot {
+    background-color: var(--red);
+}
+
+.tagblock.en-maintenance .dot {
+    background-color: var(--orange);
+}
+
+.tagblock.en-reserve .dot {
+    background-color: var(--indigo);
+}
+
+.tagblock.en-cours .dot {
+    background-color: var(--indigo);
+}
+
+.tagblock.resolu .dot {
+    background-color: var(--green);
+}
+
+.statut-en-attente-de-financement .dot {
+    background-color: var(--indigo);
+}
+
+.statut-en-attente-de-provisionnement .dot {
+    background-color: var(--indigo);
+}
+
+.statut-en-attente-de-signature .dot {
+    background-color: var(--pink);
+}
+
+.statut-en-validation-du-contrat .dot {
+    background-color: #fc850a;
+}
+
+.statut-livraison-en-cours .dot {
+    background-color: var(--main);
+}
+.statut-erreur .dot {
+    background-color: var(--red);
+}
+
+.box-container {
+    background-color: var(--main-light);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+.box-container img {
+    width: 30px;
+    height: 30px;
+}
+
+.statut-terminée .dot {
+    background-color: var(--green);
+}
+
+.componentcontainer.connexion {
+    height: 100dvh !important;
+}
+
+.textinput {
+    border-radius: 8px !important;
+}
+
+.border-error {
+    border: 1px solid var(--red) !important;
+}
+
+.stackimagegrid._1 {
+    grid-template-columns: 1fr;
+}
+
+.stackimagegrid._2 {
+    grid-auto-flow: column;
+}
+
+.buttoncircle {
+    height: 44px;
+}
+
+.buttoncircle.purple {
+    background-color: var(--main);
+    color: var(--white);
+}
+
+button[type="submit"] {
+    display: flex;
+}
+
+.loader {
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    animation: mulShdSpin 1.1s infinite ease;
+    transform: translateZ(0);
+}
+.loader.small {
+    font-size: 4px;
+}
+
+input[type="checkbox"] {
+    border: 1px solid var(--grey-400);
+    cursor: pointer;
+}
+
+@keyframes mulShdSpin {
+
+    0%,
+    100% {
+        box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
+    }
+
+    12.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.7), 1.8em -1.8em 0 0em #ffffff, 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5);
+    }
+
+    25% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.5), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7), 2.5em 0em 0 0em #ffffff, 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+    }
+
+    37.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.5), 2.5em 0em 0 0em rgba(255, 255, 255, 0.7), 1.75em 1.75em 0 0em #ffffff, 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+    }
+
+    50% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.5), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7), 0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2), -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+    }
+
+    62.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.5), 0em 2.5em 0 0em rgba(255, 255, 255, 0.7), -1.8em 1.8em 0 0em #ffffff, -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+    }
+
+    75% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.5), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.7), -2.6em 0em 0 0em #ffffff, -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
+    }
+
+    87.5% {
+        box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
+    }
+}
