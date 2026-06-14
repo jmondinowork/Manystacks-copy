@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Providers\RouteServiceProvider;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -10,23 +10,28 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered(): void
+    public function test_registration_screen_is_restricted_to_guests(): void
     {
         $response = $this->get('/register');
 
-        $response->assertStatus(200);
+        $response->assertRedirect('/dashboard');
     }
 
-    public function test_new_users_can_register(): void
+    public function test_registration_screen_is_restricted_to_non_super_admins(): void
     {
-        $response = $this->post('/register', [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-        ]);
+        $user = User::factory()->create(['role' => 'user']);
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response = $this->actingAs($user)->get('/register');
+
+        $response->assertRedirect('/dashboard');
+    }
+
+    public function test_super_admin_can_view_the_registration_screen(): void
+    {
+        $user = User::factory()->create(['role' => 'superadmin']);
+
+        $response = $this->actingAs($user)->get('/register');
+
+        $response->assertStatus(200);
     }
 }

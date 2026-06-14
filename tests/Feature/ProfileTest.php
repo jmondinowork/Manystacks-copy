@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
@@ -16,84 +17,65 @@ class ProfileTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get('/profile');
+            ->get('/profile/mon-compte');
 
         $response->assertOk();
     }
 
-    public function test_profile_information_can_be_updated(): void
+    public function test_account_information_can_be_updated(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['type' => 'Personne']);
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
-                'name' => 'Test User',
-                'email' => 'test@example.com',
+            ->post('/api/editAccount', [
+                'id' => $user->id,
+                'type' => 'Personne',
+                'fname' => 'Jean',
+                'lname' => 'Test',
             ]);
 
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
-
-        $user->refresh();
-
-        $this->assertSame('Test User', $user->name);
-        $this->assertSame('test@example.com', $user->email);
-        $this->assertNull($user->email_verified_at);
+        $response->assertOk();
+        $this->assertSame('Jean Test', $user->fresh()->name);
     }
 
-    public function test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged(): void
+    public function test_account_update_requires_an_id(): void
     {
         $user = User::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', [
-                'name' => 'Test User',
-                'email' => $user->email,
-            ]);
+            ->post('/api/editAccount', []);
 
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
-
-        $this->assertNotNull($user->refresh()->email_verified_at);
+        $response->assertSessionHasErrors('id');
     }
 
-    public function test_user_can_delete_their_account(): void
+    public function test_password_can_be_updated(): void
     {
         $user = User::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->delete('/profile', [
-                'password' => 'password',
+            ->post('/api/editPassword', [
+                'password' => 'new-password',
+                'password_confirmation' => 'new-password',
             ]);
 
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/');
-
-        $this->assertGuest();
-        $this->assertNull($user->fresh());
+        $response->assertOk();
+        $this->assertTrue(Hash::check('new-password', $user->fresh()->password));
     }
 
-    public function test_correct_password_must_be_provided_to_delete_account(): void
+    public function test_password_update_requires_confirmation(): void
     {
         $user = User::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->from('/profile')
-            ->delete('/profile', [
-                'password' => 'wrong-password',
+            ->post('/api/editPassword', [
+                'password' => 'new-password',
+                'password_confirmation' => 'does-not-match',
             ]);
 
-        $response
-            ->assertSessionHasErrors('password')
-            ->assertRedirect('/profile');
-
-        $this->assertNotNull($user->fresh());
+        $response->assertSessionHasErrors('password');
     }
 }

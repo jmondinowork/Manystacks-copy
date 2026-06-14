@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\OAuthController;
@@ -76,6 +77,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/api/deleteAdresse', [ProfileController::class, 'deleteAdresse'])->name('profile.deleteAdresse');
     Route::post('/api/editCollaborateur', [ProfileController::class, 'editCollaborateur'])->name('profile.editCollaborateur');
     Route::post('/api/deleteCollaborateur', [ProfileController::class, 'deleteCollaborateur'])->name('profile.deleteCollaborateur');
+
+    Route::get('/api/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/api/notifications/mark-as-read/{id?}', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+    Route::delete('/api/notifications/{id}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
     /*
     |--------------------------------------------------------------------------
     | LE CATALOGUE ROUTES
